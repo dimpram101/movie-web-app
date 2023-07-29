@@ -14,7 +14,7 @@ const ContentCard = (props) => {
       <div className="z-10 w-full absolute top-0 left-0 h-full py-4 px-2 bg-none group-hover:bg-black group-hover:bg-opacity-75 transition-all duration-300 ease-in-out">
         <div className="flex flex-col justify-between h-full translate-y-[430px] group-hover:translate-y-0 transition-all duration-300 ease-in-out">
           <h1 className="text-2xl font-sofia">{`${
-            data.original_title
+            data.title ?? data.name ?? data.original_name
           } (${moment(data.release_date).format("YYYY")})`}</h1>
           <div className="flex flex-col gap-2">
             <p>{data.overview}</p>

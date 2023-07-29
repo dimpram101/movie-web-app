@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="max-w-screen-2xl mx-auto h-full flex flex-row justify-between items-center">
         <Link className='text-3xl text-white font-bold' to={'/'}>Tontonin</Link>
         <div className="flex gap-8 text-lg">
-          <Link className='bg-left-bottom bg-gradient-to-r from-orange-400 to-orange-400 bg-[length:0%_1.5px] bg-no-repeat hover:bg-[length:100%_1.5px] transition-all duration-300 ease-out cursor-pointer' to={'/'}>Movies</Link>
+          <Link className='bg-left-bottom bg-gradient-to-r from-orange-400 to-orange-400 bg-[length:0%_1.5px] bg-no-repeat hover:bg-[length:100%_1.5px] transition-all duration-300 ease-out cursor-pointer' to={'/movies'}>Movies</Link>
           <Link className='bg-left-bottom bg-gradient-to-r from-orange-400 to-orange-400 bg-[length:0%_1.5px] bg-no-repeat hover:bg-[length:100%_1.5px] transition-all duration-300 ease-out cursor-pointer' to={'/tv'}>TV Shows</Link>
           <Link className='bg-left-bottom bg-gradient-to-r from-orange-400 to-orange-400 bg-[length:0%_1.5px] bg-no-repeat hover:bg-[length:100%_1.5px] transition-all duration-300 ease-out cursor-pointer' to={'/actors'}>Actors</Link>
         </div>
