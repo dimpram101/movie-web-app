@@ -4,6 +4,7 @@ import Loading from "react-loading";
 import ContentCard from "../../components/ContentCard";
 import Carousel from "react-material-ui-carousel";
 import { useNavigate } from "react-router-dom";
+import LinkButton from "../../components/LinkButton";
 
 const Movie = () => {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
@@ -59,37 +60,40 @@ const Movie = () => {
 
   return (
     <>
-      <form
-        className="flex flex-row gap-2 justify-end"
-        onSubmit={searchHandler}
-      >
-        <input
-          type="text"
-          className="bg-transparent border border-white rounded-lg py-2 px-2 w-96"
-          placeholder="Search by title..."
-          name="t"
-        />
-        <button
-          className="py-2 px-4 text-center flex flex-row gap-1 items-center bg-orange-400 rounded-lg justify-center"
-          type="submit"
+      <div className="flex flex-row justify-between items-center">
+        <LinkButton label="See Genre" to="/movies/genre" className="w-28"/>
+        <form
+          className="flex flex-row gap-2 justify-end"
+          onSubmit={searchHandler}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+          <input
+            type="text"
+            className="bg-transparent border border-white rounded-lg py-2 px-2 w-96"
+            placeholder="Search by title..."
+            name="t"
+          />
+          <button
+            className="py-2 px-4 text-center flex flex-row gap-1 items-center bg-orange-400 rounded-lg justify-center"
+            type="submit"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
-          </svg>
-          Search
-        </button>
-      </form>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+            Search
+          </button>
+        </form>
+      </div>
 
       <div className="mt-12">
         <div className="w-full">
@@ -112,11 +116,7 @@ const Movie = () => {
               {memoizedNowPlayingMovies.map((movieData) => (
                 <div className="grid grid-cols-5 gap-2" key={movieData.id}>
                   {movieData.map((movie) => (
-                    <ContentCard
-                      data={movie}
-                      linkTo="nowPlayingMovies"
-                      key={movie.id}
-                    />
+                    <ContentCard data={movie} linkTo="movies" key={movie.id} />
                   ))}
                 </div>
               ))}
@@ -150,11 +150,7 @@ const Movie = () => {
               {memoizedPopularMovies.map((movieData) => (
                 <div className="grid grid-cols-5 gap-2" key={movieData.id}>
                   {movieData.map((movie) => (
-                    <ContentCard
-                      data={movie}
-                      linkTo="nowPlayingMovies"
-                      key={movie.id}
-                    />
+                    <ContentCard data={movie} linkTo="movies" key={movie.id} />
                   ))}
                 </div>
               ))}
@@ -188,11 +184,7 @@ const Movie = () => {
               {memoizedTopRatedMovies.map((movieData) => (
                 <div className="grid grid-cols-5 gap-2" key={movieData.id}>
                   {movieData.map((movie) => (
-                    <ContentCard
-                      data={movie}
-                      linkTo="nowPlayingMovies"
-                      key={movie.id}
-                    />
+                    <ContentCard data={movie} linkTo="movies" key={movie.id} />
                   ))}
                 </div>
               ))}

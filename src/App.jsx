@@ -23,6 +23,14 @@ const router = createBrowserRouter([
             element: <Movie />
           },
           {
+            path: "genre",
+            element: <>GENRE</>
+          },
+          {
+            path: "search/:query",
+            element: <>QUERYTEST</>
+          },
+          {
             path: ":id",
             element: <>TEST ID</>
           }
