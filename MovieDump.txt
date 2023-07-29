@@ -1,0 +1,104 @@
+import { useEffect, useState } from "react";
+import api from "../../api";
+import { useSearchParams } from "react-router-dom";
+
+const Movie = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
+
+  const getMovie = (params = null) => {
+    api.get("/discover/movie", {
+      params: {
+        with_genres: params ?? ""
+      }
+    }).then(res => setMovies(res.data.results))
+    .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    api
+      .get("/genre/movie/list")
+      .then((res) => setGenres(res.data.genres))
+      .catch((err) => console.log(err));
+
+    const genreId = searchParams.get('with_genres');
+    getMovie(genreId);
+  }, [searchParams]);
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+    setMovies([]);
+    console.log(e.target.t.value)
+    api.get(`/search/movie`, {
+      params: {
+        query: e.target.t.value
+      }
+    }).then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  };
+
+  const searchByGenreHandler = (e) => {
+    setMovies([]);
+    setSearchParams({
+      with_genres: e.target.value
+    })
+  }
+
+  console.log(movies)
+
+  return (
+    <>
+      <div className="flex justify-between items-center">
+        {genres.length > 0 && (
+          <select
+            className="bg-black border border-gray-300 text-sm rounded-lg block w-40 p-2.5"
+            name="g"
+            defaultValue={""}
+            onChange={searchByGenreHandler}
+          >
+            <option value={""}>All</option>
+            {genres.map((genre) => (
+              <option key={genre.id} value={genre.id}>
+                {genre.name}
+              </option>
+            ))}
+          </select>
+        )}
+        <form
+          className="flex flex-row gap-2 justify-between"
+          onSubmit={searchHandler}
+        >
+          <input
+            type="text"
+            className="bg-transparent border border-white rounded-lg py-2 px-2 w-96"
+            placeholder="Search by title..."
+            name="t"
+          />
+          <button
+            className="py-2 px-4 text-center flex flex-row gap-1 items-center bg-orange-400 rounded-lg justify-center"
+            type="submit"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+            Search
+          </button>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default Movie;

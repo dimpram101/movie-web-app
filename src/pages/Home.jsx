@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loading from "react-loading";
 import api from "../api";
 import ContentCard from "../components/ContentCard";
 import LinkButton from "../components/LinkButton";
@@ -24,51 +25,61 @@ const Home = () => {
       .catch((err) => setError(err));
   }, []);
 
-  console.log(actorData);
-
   return (
     <div className="pb-12">
       {error && <>{error}</>}
       <div className="w-full">
         <div className="flex flex-row justify-between items-center mb-3">
-          <h1 className="text-2xl font-sofia">Discover TV Series</h1>
-          <LinkButton className="w-24" to="/" label="See More" />
+          <h1 className="text-2xl font-sofia">Discover Movies</h1>
+          <LinkButton className="w-24" to="/movies" label="See More" />
         </div>
-        <div className="grid grid-cols-5 grid-rows-4 gap-2">
-          {movieData.length > 0 ? (
-            movieData.map((data) => <ContentCard data={data} linkTo="movies" key={data.id} />)
-          ) : (
-            <>WAIT</>
-          )}
+        {movieData.length > 0 ? (
+          <div className="grid grid-cols-5 grid-rows-4 gap-2">
+            {movieData.map((data) => (
+              <ContentCard data={data} linkTo="movies" key={data.id} />
+            ))}
+          </div>
+        ) : (
+          <div className="w-full flex justify-center items-center">
+            <Loading color="white" type="bubbles" />
+          </div>
+        )}
+      </div>
+
+      <div className="w-full mt-12">
+        <div className="flex flex-row justify-between items-center mb-3">
+          <h1 className="text-2xl font-sofia">Popular TV Series</h1>
+          <LinkButton className="w-24" to="/tv" label="See More" />
         </div>
+        {tvData.length > 0 ? (
+          <div className="grid grid-cols-5 grid-rows-4 gap-2">
+            {tvData.map((data) => (
+              <ContentCard data={data} linkTo="tv" key={data.id} />
+            ))}
+          </div>
+        ) : (
+          <div className="w-full flex justify-center items-center">
+            <Loading color="white" type="bubbles" />
+          </div>
+        )}
       </div>
 
       <div className="w-full mt-12">
         <div className="flex flex-row justify-between items-center mb-3">
           <h1 className="text-2xl font-sofia">Popular Actor</h1>
-          <LinkButton className="w-24" to="/" label="See More" />
+          <LinkButton className="w-24" to="/actors" label="See More" />
         </div>
-        <div className="grid grid-cols-5 grid-rows-4 gap-2">
-          {tvData.length > 0 ? (
-            tvData.map((data) => <ContentCard data={data} linkTo="tv" key={data.id} />)
-          ) : (
-            <>WAIT</>
-          )}
-        </div>
-      </div>
-
-      <div className="w-full mt-12">
-        <div className="flex flex-row justify-between items-center mb-3">
-          <h1 className="text-2xl font-sofia">Popular Actor</h1>
-          <LinkButton className="w-24" to="/" label="See More" />
-        </div>
-        <div className="grid grid-cols-5 grid-rows-4 gap-2">
-          {actorData.length > 0 ? (
-            actorData.map((data) => <ContentCard data={data} linkTo="actors" key={data.id} />)
-          ) : (
-            <>WAIT</>
-          )}
-        </div>
+        {actorData.length > 0 ? (
+          <div className="grid grid-cols-5 grid-rows-4 gap-2">
+            {actorData.map((data) => (
+              <ContentCard data={data} linkTo="actors" key={data.id} />
+            ))}
+          </div>
+        ) : (
+          <div className="w-full flex justify-center items-center">
+            <Loading color="white" type="bubbles" />
+          </div>
+        )}
       </div>
     </div>
   );

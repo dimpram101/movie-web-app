@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import IndexLayout from "./layouts/IndexLayout";
 import Home from "./pages/Home";
 import Actors from "./pages/actors/Actors";
+import Movie from "./pages/movies/Movie";
+import Tv from "./pages/tv/Tv"
 
 const router = createBrowserRouter([
   {
@@ -15,15 +17,42 @@ const router = createBrowserRouter([
       },
       {
         path: '/movies',
-        element: <>Movies</>
+        children: [
+          {
+            index: true,
+            element: <Movie />
+          },
+          {
+            path: ":id",
+            element: <>TEST ID</>
+          }
+        ]
       },
       {
         path: '/tv',
-        element: <>Tv Show</>
+        children: [
+          {
+            index: true,
+            element: <Tv />
+          },
+          {
+            path: ":id",
+            element: <>TEST ID</>
+          }
+        ]
       },
       {
         path: '/actors',
-        element: <Actors />
+        children: [
+          {
+            index: true,
+            element: <Actors />
+          },
+          {
+            path: ":id",
+            element: <>TEST ID</>
+          }
+        ]
       }
     ],
   },
