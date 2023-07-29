@@ -1,7 +1,7 @@
-import moment from "moment";
-import { Link } from "react-router-dom";
-
 /* eslint-disable react/prop-types */
+import moment from "moment";
+import LinkButton from "./LinkButton";
+
 const ContentCard = (props) => {
   const { data } = props;
   return (
@@ -16,14 +16,9 @@ const ContentCard = (props) => {
           <h1 className="text-2xl font-sofia">{`${
             data.original_title
           } (${moment(data.release_date).format("YYYY")})`}</h1>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
             <p>{data.overview}</p>
-            <Link
-              to={"/"}
-              className="w-full text-center py-2 bg-orange-400 rounded-lg font-semibold"
-            >
-              Detail
-            </Link>
+            <LinkButton to="/" label="Detail"/>
           </div>
         </div>
       </div>
