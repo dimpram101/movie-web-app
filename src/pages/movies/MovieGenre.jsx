@@ -41,7 +41,7 @@ const MovieGenre = () => {
         {genres.length > 0 &&
           genres.map((genre) => (
             <div
-              className="h-64 flex flex-col justify-center items-center rounded-md cursor-pointer border border-white border-opacity-20 hover:bg-orange-400 transition-colors duration-300 ease-in-out"
+              className="h-32 flex flex-col justify-center items-center rounded-md cursor-pointer border border-white border-opacity-20 hover:bg-orange-400 transition-colors duration-300 ease-in-out"
               key={genre.id}
               onClick={() => redirectHandler(genre.id)}
             >
