@@ -1,15 +1,15 @@
 import moment from "moment/moment";
 import minutesToHm from "../utils/minutesToHours";
 import numberFormatter from "../utils/numberFormatter";
+import NoImage from '../assets/no-image.png'
 
 /* eslint-disable react/prop-types */
 const DetailHeadSection = ({ data, rate }) => {
-  console.log(data)
   return (
     <div className="flex flex-row gap-4">
       <div className="w-[550px] h-[604px]">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+          src={data.poster_path ? `https://image.tmdb.org/t/p/w500/${data.poster_path}` : NoImage}
           className="h-full"
         />
       </div>
