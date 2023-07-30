@@ -21,9 +21,16 @@ const MovieDetail = () => {
   const casts = useMemo(() => {
     if (!data) return null;
     let casts = [];
-    for (let i = 0; i < 13; i++) {
-      casts.push(data.credits.cast[i]);
+    if (data.credits.cast.length < 13) {
+      for (let i = 0; i < data.credits.cast.length; i++) {
+        casts.push(data.credits.cast[i]);
+      }
+    } else {
+      for (let i = 0; i < 13; i++) {
+        casts.push(data.credits.cast[i]);
+      }
     }
+
     return casts;
   }, [data]);
 
