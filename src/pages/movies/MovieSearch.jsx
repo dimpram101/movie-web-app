@@ -164,11 +164,15 @@ const MovieSearch = () => {
               />
             </div>
           </div>
-          {data.results.length > 0 && (
+          {data.results.length > 0 ? (
             <div className="grid grid-cols-5 grid-rows-4 gap-2">
               {data.results.map((data) => (
                 <ContentCard data={data} linkTo="movies" key={data.id} />
               ))}
+            </div>
+          ):(
+            <div className="h-96 flex flex-col justify-center items-center italic text-3xl font-semibold">
+              No data found
             </div>
           )}
         </div>
