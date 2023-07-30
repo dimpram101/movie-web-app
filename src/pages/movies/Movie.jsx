@@ -71,6 +71,7 @@ const Movie = () => {
             className="bg-transparent border border-white rounded-lg py-2 px-2 w-96"
             placeholder="Search by title..."
             name="t"
+            required
           />
           <button
             className="py-2 px-4 text-center flex flex-row gap-1 items-center bg-orange-400 rounded-lg justify-center"

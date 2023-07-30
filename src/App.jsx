@@ -6,6 +6,7 @@ import Actors from "./pages/actors/Actors";
 import Movie from "./pages/movies/Movie";
 import Tv from "./pages/tv/Tv"
 import MovieDetail from "./pages/movies/MovieDetail";
+import MovieSearch from "./pages/movies/MovieSearch";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
           },
           {
             path: "search/:query",
-            element: <>QUERYTEST</>
+            element: <MovieSearch />
           },
           {
             path: ":id",
