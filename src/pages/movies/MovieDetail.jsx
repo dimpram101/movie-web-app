@@ -11,11 +11,12 @@ import DetailHeadSection from "../../components/DetailHeadSection";
 const MovieDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  console.log(data)
   const rate = useMemo(() => {
-    if (!data) return null;
-    const rate = data.release_dates.results.filter(
+    if (!data || !data?.release_dates) return "Unknown";
+    const rate = data?.release_dates?.results.filter(
       (result) => result.iso_3166_1 === "US"
-    )[0].release_dates[0].certification;
+    )[0]?.release_dates[0]?.certification;
     return rate;
   }, [data]);
   const casts = useMemo(() => {
