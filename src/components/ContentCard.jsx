@@ -18,7 +18,7 @@ const ContentCard = (props) => {
           } ${data.poster_path ? `(${moment(data.release_date).format("YYYY")})` : ''}`}</h1>
           <div className="flex flex-col">
             <p className="h-72 w-full overflow-ellipsis truncate whitespace-normal flex flex-col">{data.overview}</p>
-            <LinkButton to={`/${linkTo}/`} label="Detail" className="flex-grow"/>
+            <LinkButton to={`/${linkTo}/${data.id}`} label="Detail" className="flex-grow"/>
           </div>
         </div>
       </div>

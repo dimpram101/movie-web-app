@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Actors from "./pages/actors/Actors";
 import Movie from "./pages/movies/Movie";
 import Tv from "./pages/tv/Tv"
+import MovieDetail from "./pages/movies/MovieDetail";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":id",
-            element: <>TEST ID</>
+            element: <MovieDetail />
           }
         ]
       },
