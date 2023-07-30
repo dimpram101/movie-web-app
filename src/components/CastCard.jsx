@@ -3,7 +3,7 @@ import NoImage from "../assets/no-image.png"
 const CastCard = (props) => {
   const { cast } = props;
   return (
-    <div className="w-60 h-96 flex flex-col">
+    <div className="w-60 h-[26rem] flex flex-col">
       <div className="h-[17rem] rounded-t-lg">
         <img src={cast.profile_path ? `https://www.themoviedb.org/t/p/w200/${cast.profile_path}` : NoImage} alt="" className="w-full object-cover h-full rounded-t-lg"/>
       </div>

@@ -54,7 +54,7 @@ const MovieDetail = () => {
           <DetailHeadSection data={data} rate={rate}/>
           <div className="mt-12 font-sofia w-full">
             <h1 className="text-orange-400 text-3xl font-semibold">Casts</h1>
-            <div className="mt-2 flex overflow-x-auto h-[26rem]">
+            <div className="mt-2 flex overflow-x-auto h-[28gitrem]">
               <div className="flex-shrink-0 flex space-x-4">
                 {casts.length > 0 &&
                   casts.map((cast) => <CastCard cast={cast} key={cast} />)}
