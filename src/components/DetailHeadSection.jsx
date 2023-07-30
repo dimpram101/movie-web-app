@@ -4,6 +4,7 @@ import numberFormatter from "../utils/numberFormatter";
 
 /* eslint-disable react/prop-types */
 const DetailHeadSection = ({ data, rate }) => {
+  console.log(data)
   return (
     <div className="flex flex-row gap-4">
       <div className="w-[550px] h-[604px]">
@@ -20,7 +21,7 @@ const DetailHeadSection = ({ data, rate }) => {
           <div className="flex items-center mb-3 text-lg">
             <p>{rate}</p>
             <p className="mx-2">|</p>
-            <p>{moment(data.release_date).format("MM/DD/YYYY")}</p>
+            <p>{data?.release_date ? moment(data.release_date).format("MM/DD/YYYY") : 'Unknown'}</p>
             <p className="mx-2">|</p>
             <div className="flex gap-2">
               {data.genres.map((genre) => (
@@ -43,7 +44,7 @@ const DetailHeadSection = ({ data, rate }) => {
           </div>
           <div className="flex flex-col">
             <p className="text-orange-400 font-bold">Original Language</p>
-            <p className="font-normal">{data.spoken_languages[0].name}</p>
+            <p className="font-normal">{data.spoken_languages[0]?.name ?? 'Unknown'}</p>
           </div>
           <div className="flex flex-col">
             <p className="text-orange-400 font-bold">Budget</p>
