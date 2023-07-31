@@ -4,7 +4,7 @@ import numberFormatter from "../utils/numberFormatter";
 import NoImage from '../assets/no-image.png'
 
 /* eslint-disable react/prop-types */
-const DetailHeadSection = ({ data, rate }) => {
+const MovieDetailHeadSection = ({ data, rate }) => {
   return (
     <div className="flex flex-row gap-4">
       <div className="w-[550px] h-[604px]">
@@ -62,4 +62,4 @@ const DetailHeadSection = ({ data, rate }) => {
   );
 };
 
-export default DetailHeadSection;
+export default MovieDetailHeadSection;

@@ -10,6 +10,7 @@ import MovieSearch from "./pages/movies/MovieSearch";
 import MovieGenre from "./pages/movies/MovieGenre";
 import MovieSearchByGenre from "./pages/movies/MovieSearchByGenre";
 import MovieCredit from "./pages/movies/MovieCredit";
+import TvDetail from "./pages/tv/TvDetail";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,16 @@ const router = createBrowserRouter([
           },
           {
             path: ":id",
-            element: <>TEST ID</>,
+            children: [
+              {
+                index: true,
+                element: <TvDetail />,
+              },
+              {
+                path: "credit",
+                element: <>TSE credit</>,
+              },
+            ],
           },
         ],
       },

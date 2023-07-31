@@ -1,17 +1,15 @@
-// import React from 'react'
-
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../../api";
 import Loading from "react-loading";
-import { useMemo } from "react";
-import CastCard from "../../components/CastCard";
 import MovieDetailHeadSection from "../../components/MovieMovieDetailHeadSection";
+import CastCard from "../../components/CastCard";
 
-const MovieDetail = () => {
+const TvDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   console.log(data);
+
   const rate = useMemo(() => {
     if (!data || !data?.release_dates) return "Unknown";
     const rate = data?.release_dates?.results.filter(
@@ -19,6 +17,7 @@ const MovieDetail = () => {
     )[0]?.release_dates[0]?.certification;
     return rate;
   }, [data]);
+
   const casts = useMemo(() => {
     if (!data) return null;
     let casts = [];
@@ -31,13 +30,12 @@ const MovieDetail = () => {
         casts.push(data.credits.cast[i]);
       }
     }
-
     return casts;
   }, [data]);
 
   useEffect(() => {
     api
-      .get(`/movie/${id}?append_to_response=credits,release_dates`)
+      .get(`/tv/${id}?append_to_response=credits,release_dates`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, [id]);
@@ -89,4 +87,4 @@ const MovieDetail = () => {
   );
 };
 
-export default MovieDetail;
+export default TvDetail;
