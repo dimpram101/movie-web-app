@@ -8,6 +8,7 @@ import Tv from "./pages/tv/Tv"
 import MovieDetail from "./pages/movies/MovieDetail";
 import MovieSearch from "./pages/movies/MovieSearch";
 import MovieGenre from "./pages/movies/MovieGenre";
+import MovieSearchByGenre from "./pages/movies/MovieSearchByGenre";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
           },
           {
             path: "genre/:id",
-            element: <>GENRE MOVIE ID</>
+            element: <MovieSearchByGenre />
           },
           {
             path: "search/:query",
