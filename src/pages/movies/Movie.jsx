@@ -5,24 +5,13 @@ import ContentCard from "../../components/ContentCard";
 import Carousel from "react-material-ui-carousel";
 import { useNavigate } from "react-router-dom";
 import LinkButton from "../../components/LinkButton";
+import sliceData from "../../utils/sliceData";
 
 const Movie = () => {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const history = useNavigate();
-
-  const sliceData = (data) => {
-    const chunkSize = 5;
-    const slicedData = [];
-
-    for (let i = 0; i < data.length; i += chunkSize) {
-      const chunk = data.slice(i, i + chunkSize);
-      slicedData.push(chunk);
-    }
-
-    return slicedData;
-  };
 
   const memoizedNowPlayingMovies = useMemo(
     () => sliceData(nowPlayingMovies),
