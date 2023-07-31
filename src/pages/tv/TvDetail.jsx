@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../../api";
 import Loading from "react-loading";
-import MovieDetailHeadSection from "../../components/MovieMovieDetailHeadSection";
+import MovieDetailHeadSection from "../../components/MovieDetailHeadSection";
 import CastCard from "../../components/CastCard";
 
 const TvDetail = () => {

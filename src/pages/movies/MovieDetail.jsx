@@ -6,7 +6,7 @@ import api from "../../api";
 import Loading from "react-loading";
 import { useMemo } from "react";
 import CastCard from "../../components/CastCard";
-import MovieDetailHeadSection from "../../components/MovieMovieDetailHeadSection";
+import MovieDetailHeadSection from "../../components/MovieDetailHeadSection";
 
 const MovieDetail = () => {
   const { id } = useParams();
