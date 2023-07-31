@@ -4,11 +4,12 @@ import IndexLayout from "./layouts/IndexLayout";
 import Home from "./pages/Home";
 import Actors from "./pages/actors/Actors";
 import Movie from "./pages/movies/Movie";
-import Tv from "./pages/tv/Tv"
+import Tv from "./pages/tv/Tv";
 import MovieDetail from "./pages/movies/MovieDetail";
 import MovieSearch from "./pages/movies/MovieSearch";
 import MovieGenre from "./pages/movies/MovieGenre";
 import MovieSearchByGenre from "./pages/movies/MovieSearchByGenre";
+import MovieCredit from "./pages/movies/MovieCredit";
 
 const router = createBrowserRouter([
   {
@@ -20,62 +21,71 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/movies',
+        path: "/movies",
         children: [
           {
             index: true,
-            element: <Movie />
+            element: <Movie />,
           },
           {
             path: "genre",
-            element: <MovieGenre />
+            element: <MovieGenre />,
           },
           {
             path: "genre/:id",
-            element: <MovieSearchByGenre />
+            element: <MovieSearchByGenre />,
           },
           {
             path: "search/:query",
-            element: <MovieSearch />
+            element: <MovieSearch />,
           },
           {
             path: ":id",
-            element: <MovieDetail />
-          }
-        ]
+            children: [
+              {
+                index: true,
+                element: <MovieDetail />,
+              },
+              {
+                path: "credit",
+                element: <MovieCredit />,
+              },
+            ],
+          },
+        ],
       },
       {
-        path: '/tv',
+        path: "/tv",
         children: [
           {
             index: true,
-            element: <Tv />
+            element: <Tv />,
           },
           {
             path: ":id",
-            element: <>TEST ID</>
-          }
-        ]
+            element: <>TEST ID</>,
+          },
+        ],
       },
       {
-        path: '/actors',
+        path: "/actors",
         children: [
           {
             index: true,
-            element: <Actors />
+            element: <Actors />,
           },
           {
             path: ":id",
-            element: <>TEST ID</>
-          }
-        ]
-      }
+            element: <>TEST ID</>,
+          },
+        ],
+      },
     ],
   },
   {
-    path: '*',
-    element: <>NOT FOUND</>
-  }
+    path: "*",
+    element: <>NOT FOUND</>,
+  },
 ]);
 
 function App() {

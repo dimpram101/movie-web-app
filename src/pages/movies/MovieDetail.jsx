@@ -58,7 +58,7 @@ const MovieDetail = () => {
               <div className="flex-shrink-0 flex space-x-4">
                 {casts.length > 0 &&
                   casts.map((cast) => <CastCard cast={cast} key={cast} />)}
-                <Link to={'/movies'} className="w-60 h-96 flex flex-col justify-center items-center gap-2 rounded-lg group hover:bg-opacity-50 hover:bg-orange-400 transition-colors duration-300 ease-in-out">
+                <Link to={`/movies/${id}/credit`} className="w-60 h-[26rem] flex flex-col justify-center items-center gap-2 rounded-lg group hover:bg-opacity-50 hover:bg-orange-400 transition-colors duration-300 ease-in-out">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
