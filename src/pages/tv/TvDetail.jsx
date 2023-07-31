@@ -2,21 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../../api";
 import Loading from "react-loading";
-import MovieDetailHeadSection from "../../components/MovieDetailHeadSection";
 import CastCard from "../../components/CastCard";
+import TvDetailHeadSection from "../../components/TvDetailHeadSection";
+import NoImage from "../../assets/no-image.png";
 
 const TvDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   console.log(data);
-
-  const rate = useMemo(() => {
-    if (!data || !data?.release_dates) return "Unknown";
-    const rate = data?.release_dates?.results.filter(
-      (result) => result.iso_3166_1 === "US"
-    )[0]?.release_dates[0]?.certification;
-    return rate;
-  }, [data]);
 
   const casts = useMemo(() => {
     if (!data) return null;
@@ -49,15 +42,44 @@ const TvDetail = () => {
       )}
       {data && (
         <>
-          <MovieDetailHeadSection data={data} rate={rate} />
-          <div className="mt-12 font-sofia w-full">
+          <TvDetailHeadSection data={data} />
+
+          <div className="mt-8 h-[28rem]">
+            <h1 className="text-3xl font-sofia text-orange-400 font-semibold">
+              Seasons
+            </h1>
+            <div className="border border-white border-opacity-40 rounded h-full mt-2 overflow-y-scroll flex flex-col p-2">
+              <div className="flex-shrink-0 flex flex-col space-y-1">
+                {data.seasons.length > 0 &&
+                  data.seasons.map((season) => (
+                    <div
+                      className="h-32 border border-orange-400 border-opacity-30 flex"
+                      key={season.id}
+                    >
+                      <div className="flex flex-col gap-2 w-1/2 p-2">
+                        <h1 className="text-2xl font-sofia text-orange-400">
+                          Season {season.season_number}
+                        </h1>
+                        <p>Air Date : {season.air_date}</p>
+                        <p>Total episode : {season.episode_count}</p>
+                      </div>
+                      <div className="w-1/2 h-full opacity-40">
+                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w500/${season.poster_path}` : NoImage} alt="" className="w-full h-full object-cover"/>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 font-sofia w-full">
             <h1 className="text-orange-400 text-3xl font-semibold">Casts</h1>
             <div className="mt-2 flex overflow-x-auto h-[28rem]">
               <div className="flex-shrink-0 flex space-x-4">
                 {casts.length > 0 &&
                   casts.map((cast) => <CastCard cast={cast} key={cast} />)}
                 <Link
-                  to={`/movies/${id}/credit`}
+                  to={`/tv/${id}/credit`}
                   className="w-60 h-[26rem] flex flex-col justify-center items-center gap-2 rounded-lg group hover:bg-opacity-50 hover:bg-orange-400 transition-colors duration-300 ease-in-out"
                 >
                   <svg
