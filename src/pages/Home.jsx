@@ -48,7 +48,7 @@ const Home = () => {
 
       <div className="w-full mt-12">
         <div className="flex flex-row justify-between items-center mb-3">
-          <h1 className="text-2xl font-sofia">Popular TV Series</h1>
+          <h1 className="text-2xl font-sofia">Discover TV Series</h1>
           <LinkButton className="w-24" to="/tv" label="See More" />
         </div>
         {tvData.length > 0 ? (
