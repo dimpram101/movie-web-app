@@ -17,7 +17,7 @@ const MovieDetail = () => {
     const rate = data?.release_dates?.results.filter(
       (result) => result.iso_3166_1 === "US"
     )[0]?.release_dates[0]?.certification;
-    return rate;
+    return rate || 'Rate not found';
   }, [data]);
   const casts = useMemo(() => {
     if (!data) return null;
