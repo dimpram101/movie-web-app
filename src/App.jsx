@@ -11,6 +11,7 @@ import MovieGenre from "./pages/movies/MovieGenre";
 import MovieSearchByGenre from "./pages/movies/MovieSearchByGenre";
 import MovieCredit from "./pages/movies/MovieCredit";
 import TvDetail from "./pages/tv/TvDetail";
+import TvCredit from "./pages/tv/TvCredit";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
               },
               {
                 path: "credit",
-                element: <>TSE credit</>,
+                element: <TvCredit />,
               },
             ],
           },
