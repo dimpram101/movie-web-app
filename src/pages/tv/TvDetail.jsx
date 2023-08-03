@@ -9,8 +9,6 @@ import NoImage from "../../assets/no-image.png";
 const TvDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
-  console.log(data);
-
   const casts = useMemo(() => {
     if (!data) return null;
     let casts = [];
@@ -51,23 +49,34 @@ const TvDetail = () => {
             <div className="border border-white border-opacity-40 rounded h-full mt-2 overflow-y-scroll flex flex-col p-2">
               <div className="flex-shrink-0 flex flex-col space-y-1">
                 {data.seasons.length > 0 &&
-                  data.seasons.map((season) => (
-                    <div
-                      className="h-32 border border-orange-400 border-opacity-30 flex"
-                      key={season.id}
-                    >
-                      <div className="flex flex-col gap-2 w-1/2 p-2">
-                        <h1 className="text-2xl font-sofia text-orange-400">
-                          Season {season.season_number}
-                        </h1>
-                        <p>Air Date : {season.air_date}</p>
-                        <p>Total episode : {season.episode_count}</p>
-                      </div>
-                      <div className="w-1/2 h-full opacity-40">
-                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w500/${season.poster_path}` : NoImage} alt="" className="w-full h-full object-cover"/>
-                      </div>
-                    </div>
-                  ))}
+                  data.seasons.map(
+                    (season) =>
+                      season.season_number !== 0 && (
+                        <div
+                          className="h-32 border border-orange-400 border-opacity-30 flex"
+                          key={season.id}
+                        >
+                          <div className="flex flex-col gap-2 w-1/2 p-2">
+                            <h1 className="text-2xl font-sofia text-orange-400">
+                              Season {season.season_number}
+                            </h1>
+                            <p>Air Date : {season.air_date}</p>
+                            <p>Total episode : {season.episode_count}</p>
+                          </div>
+                          <div className="w-1/2 h-full opacity-40">
+                            <img
+                              src={
+                                season.poster_path
+                                  ? `https://image.tmdb.org/t/p/w500/${season.poster_path}`
+                                  : NoImage
+                              }
+                              alt=""
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      )
+                  )}
               </div>
             </div>
           </div>
@@ -77,7 +86,7 @@ const TvDetail = () => {
             <div className="mt-2 flex overflow-x-auto h-[28rem]">
               <div className="flex-shrink-0 flex space-x-4">
                 {casts.length > 0 &&
-                  casts.map((cast) => <CastCard cast={cast} key={cast} />)}
+                  casts.map((cast) => <CastCard cast={cast} key={cast.id} />)}
                 <Link
                   to={`/tv/${id}/credit`}
                   className="w-60 h-[26rem] flex flex-col justify-center items-center gap-2 rounded-lg group hover:bg-opacity-50 hover:bg-orange-400 transition-colors duration-300 ease-in-out"
