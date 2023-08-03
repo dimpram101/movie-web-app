@@ -20,8 +20,6 @@ const MovieCredit = () => {
     });
   }, [id]);
 
-  console.log(credit);
-
   return (
     <>
       {isLoading ? (
