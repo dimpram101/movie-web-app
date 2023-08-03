@@ -12,6 +12,7 @@ import MovieSearchByGenre from "./pages/movies/MovieSearchByGenre";
 import MovieCredit from "./pages/movies/MovieCredit";
 import TvDetail from "./pages/tv/TvDetail";
 import TvCredit from "./pages/tv/TvCredit";
+import TvSearch from "./pages/tv/TvSearch";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             element: <Tv />,
           },
           {
+            path: "search/:query",
+            element: <TvSearch />,
+          },
+          {
             path: ":id",
             children: [
               {
@@ -91,11 +96,11 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "*",
+        element: <>NOT FOUND</>,
+      },
     ],
-  },
-  {
-    path: "*",
-    element: <>NOT FOUND</>,
   },
 ]);
 

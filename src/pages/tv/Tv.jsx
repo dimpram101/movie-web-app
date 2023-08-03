@@ -5,11 +5,13 @@ import LinkButton from "../../components/LinkButton";
 import Carousel from "react-material-ui-carousel";
 import ContentCard from "../../components/ContentCard";
 import Loading from "react-loading";
+import { useNavigate } from "react-router-dom";
 
 const Tv = () => {
   const [discoverData, setDiscoverData] = useState([]);
   const [popularData, setPopularData] = useState([]);
   const [topRatedData, setTopRatedData] = useState([]);
+  const history = useNavigate();
 
   useEffect(() => {
     api
@@ -39,13 +41,19 @@ const Tv = () => {
     [topRatedData]
   );
 
+  const searchHandler = (e) => {
+    e.preventDefault();
+    const query = e.target.t.value;
+    history(`/tv/search/${query}`);
+  };
+
   return (
     <>
       <div className="flex flex-row justify-between items-center">
         <LinkButton label="See Genre" to="/tv/genre" className="w-28" />
         <form
           className="flex flex-row gap-2 justify-end"
-          // onSubmit={searchHandler}
+          onSubmit={searchHandler}
         >
           <input
             type="text"
