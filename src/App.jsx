@@ -15,6 +15,7 @@ import TvCredit from "./pages/tv/TvCredit";
 import TvSearch from "./pages/tv/TvSearch";
 import TvGenre from "./pages/tv/TvGenre";
 import TvSearchByGenre from "./pages/tv/TvSearchByGenre";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -108,7 +109,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <>NOT FOUND</>,
+        element: <NotFound />,
       },
     ],
   },
