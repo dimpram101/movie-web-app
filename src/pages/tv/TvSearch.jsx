@@ -85,8 +85,6 @@ const TvSearch = () => {
     history(`/tv/search/${newQuery}`);
   };
 
-  console.log(data);
-
   if (isLoading) {
     return (
       <div className="w-full flex h-screen justify-center items-center">

@@ -11,7 +11,6 @@ import MovieDetailHeadSection from "../../components/MovieDetailHeadSection";
 const MovieDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
-  console.log(data);
   const rate = useMemo(() => {
     if (!data || !data?.release_dates) return "Unknown";
     const rate = data?.release_dates?.results.filter(

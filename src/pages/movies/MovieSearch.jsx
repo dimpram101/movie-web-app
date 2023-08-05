@@ -81,12 +81,9 @@ const MovieSearch = () => {
   const searchHandler = (e) => {
     e.preventDefault();
     const newQuery = e.target.t.value;
-    console.log(newQuery)
     setIsLoading(true);
     history(`/movies/search/${newQuery}`);
   };
-
-  console.log(data);
 
   if (isLoading) {
     return (
