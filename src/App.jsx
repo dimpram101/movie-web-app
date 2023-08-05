@@ -2,7 +2,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import IndexLayout from "./layouts/IndexLayout";
 import Home from "./pages/Home";
-import Actors from "./pages/actors/Actors";
+// import Actors from "./pages/actors/Actors";
 import Movie from "./pages/movies/Movie";
 import Tv from "./pages/tv/Tv";
 import MovieDetail from "./pages/movies/MovieDetail";
@@ -16,6 +16,7 @@ import TvSearch from "./pages/tv/TvSearch";
 import TvGenre from "./pages/tv/TvGenre";
 import TvSearchByGenre from "./pages/tv/TvSearchByGenre";
 import NotFound from "./pages/NotFound";
+import UnderConstruction from "./pages/UnderConstruction";
 
 const router = createBrowserRouter([
   {
@@ -99,12 +100,16 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Actors />,
+            element: <UnderConstruction />,
           },
+          // {
+          //   path: ":id",
+          //   element: <>TEST ID</>,
+          // },
           {
-            path: ":id",
-            element: <>TEST ID</>,
-          },
+            path: "*",
+            element: <UnderConstruction />
+          }
         ],
       },
       {
