@@ -14,6 +14,7 @@ import TvDetail from "./pages/tv/TvDetail";
 import TvCredit from "./pages/tv/TvCredit";
 import TvSearch from "./pages/tv/TvSearch";
 import TvGenre from "./pages/tv/TvGenre";
+import TvSearchByGenre from "./pages/tv/TvSearchByGenre";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
           {
             path: "genre",
             element: <TvGenre />,
+          },
+          {
+            path: "genre/:id",
+            element: <TvSearchByGenre />,
           },
           {
             path: "search/:query",
